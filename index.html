@@ -1,50 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nikunj Rohit Mirajkar | Cloud & DevOps</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Nikunj Rohit Mirajkar — Cloud & DevOps • Gaming</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
-    <nav>
-        <h1 class="logo">Nikunj RM</h1>
-        <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="gaming.html">Gaming</a></li>
-        </ul>
-    </nav>
+    <div class="container">
+        <nav>
+            <div class="logo">NR • Nikunj</div>
+            <div class="links">
+                <a href="index.html" class="active">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="skills.html">Skills</a>
+                <a href="gaming.html">Gaming</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
 
-    <header class="hero">
-        <h2>Cloud & DevOps Enthusiast</h2>
-        <p>Building cloud-native solutions, automation pipelines, and scalable systems.</p>
-        <a href="#projects" class="btn">View My Projects</a>
-    </header>
+        <section class="card">
+            <h1 class="h1">&gt; hi — i'm Nikunj Rohit Mirajkar</h1>
+            <div class="terminal reveal" style="opacity:0;margin-top:12px">
+                Cloud / DevOps Enthusiast — building containerized systems, CI/CD pipelines & distributed apps.
+            </div>
 
-    <section id="projects" class="section">
-        <h3>Cloud & DevOps Projects</h3>
+            <div class="kv" style="margin-top:12px">
+                <div class="chip">Azure</div>
+                <div class="chip">Docker</div>
+                <div class="chip">Kubernetes</div>
+                <div class="chip">CI/CD</div>
+                <div class="chip">Python</div>
+                <div class="chip">MQTT</div>
+            </div>
 
-        <div class="card">
-            <h4>CI/CD Pipeline with GitHub Actions</h4>
-            <p>Automated testing, containerization, and deployment to AWS using GitHub Actions.</p>
-        </div>
+            <div style="margin-top:14px">
+                <a href="assets/resume.txt" class="neon-btn" target="_blank">Download Resume</a>
+            </div>
+        </section>
 
-        <div class="card">
-            <h4>Docker + Kubernetes App</h4>
-            <p>Microservices deployed on Kubernetes with Ingress, autoscaling, and Helm charts.</p>
-        </div>
+        <section class="card gaming-hero">
+            <h2 class="h1" style="font-size:20px">Gaming — ShaddyCreek__15</h2>
+            <p class="terminal" style="margin-top:8px">PS5 gameplay, clips & channel growth experiments.</p>
 
-        <div class="card">
-            <h4>MQTT-Based Messaging System</h4>
-            <p>Secure pub/sub system using Eclipse Paho MQTT and Docker Compose.</p>
-        </div>
-    </section>
+            <!-- Tilt wrapper: site uses local thumbnail asset; also keep the original uploaded path as data-local-path -->
+            <div class="tilt-wrap" style="margin-top:12px"
+                data-local-path="/mnt/data/Gemini_Generated_Image_dcg4c4dcg4c4dcg4.png">
+                <img class="thumbnail" src="assets/images/thumbnail.png" alt="ShaddyCreek thumbnail"
+                    data-local-path="/mnt/data/Gemini_Generated_Image_dcg4c4dcg4c4dcg4.png">
+            </div>
 
-    <footer>
-        <p>© 2025 Nikunj Rohit Mirajkar</p>
-    </footer>
+            <div style="margin-top:12px">
+                <a class="neon-btn" href="gaming.html">Go to Gaming Zone</a>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div>Made with &lt;3 · Nikunj</div>
+            <div style="color:var(--muted)">Nottingham, UK</div>
+        </footer>
+    </div>
+
+    <!-- VanillaTilt CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>

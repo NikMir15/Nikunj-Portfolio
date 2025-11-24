@@ -1,0 +1,14 @@
+Nikunj Rohit Mirajkar
+Cloud & DevOps Enthusiast
+
+Education:
+- MSc Cloud & Enterprise Computing, Nottingham Trent University (Oct 2024 – Oct 2025)
+- BSc Computer Science, Savitribai Phule Pune University (Oct 2020 – Apr 2023)
+
+Experience:
+- Clean Harbors: Account Manager / BDR roles
+
+Skills:
+- Azure, Docker, Kubernetes, CI/CD, Python, MQTT
+Contact:
+nikunjmirajkar15@gmail.com

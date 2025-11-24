@@ -1,83 +1,160 @@
+:root {
+    --bg: #04040a;
+    --card: #09101a;
+    --text: #dfffe0;
+    --muted: #7c8db5;
+    --accent: #16f2ff;
+    --neon1: #7c4dff;
+    --neon2: #00d7ff;
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
 body {
+    height: 100%;
     margin: 0;
-    font-family: 'Consolas', monospace;
-    background: #0d0d0d;
-    color: #eaeaea;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+    background: linear-gradient(180deg, #000812 0%, var(--bg) 100%);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased
+}
+
+.container {
+    max-width: 1100px;
+    margin: 28px auto;
+    padding: 18px
 }
 
 nav {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding: 20px;
-    background: #111;
-    border-bottom: 1px solid #333;
+    padding: 12px 18px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.01));
+    border-radius: 10px
 }
 
-nav ul {
-    display: flex;
-    gap: 20px;
-    list-style: none;
+nav .logo {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 18px
 }
 
-nav a {
+nav .links a {
+    color: var(--muted);
     text-decoration: none;
-    color: #ccc;
-    font-size: 16px;
-    transition: 0.2s;
+    margin-left: 14px;
+    padding: 6px 10px;
+    border-radius: 6px
 }
 
-nav a:hover,
-nav a.active {
-    color: #00ffcc;
-}
-
-.logo {
-    color: #00ffcc;
-    font-size: 22px;
-}
-
-.hero {
-    padding: 100px 20px;
-    text-align: center;
-}
-
-.btn {
-    padding: 12px 22px;
-    background: #00ffcc;
-    color: #000;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.section {
-    padding: 60px 20px;
+nav .links a.active,
+nav .links a:hover {
+    color: var(--accent);
+    background: rgba(16, 242, 255, 0.03);
+    border: 1px solid rgba(16, 242, 255, 0.03)
 }
 
 .card {
-    background: #1a1a1a;
-    padding: 20px;
-    margin: 20px 0;
-    border-left: 4px solid #00ffcc;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 18px;
+    border-radius: 10px;
+    margin-top: 18px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6)
+}
+
+.h1 {
+    font-size: 28px;
+    color: var(--accent);
+    margin: 0
+}
+
+.kv {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px
+}
+
+.chip {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 6px 8px;
     border-radius: 6px;
+    color: var(--muted);
+    font-size: 13px
 }
 
-.thumbnail-container {
-    max-width: 600px;
-    margin: auto;
-    background: #1a1a1a;
-    padding: 20px;
+.terminal {
+    background: #001212;
     border-radius: 8px;
+    padding: 14px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #bdf7b6
 }
 
-.thumbnail-preview img {
+.footer {
+    margin-top: 28px;
+    color: #6b8b6b;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+/* thumbnail & gaming neon */
+.thumbnail {
     width: 100%;
-    border-radius: 8px;
+    max-width: 560px;
+    border-radius: 10px;
+    display: block;
+    margin: 12px auto;
+    border: 3px solid rgba(124, 77, 255, 0.14);
+    box-shadow: 0 12px 40px rgba(124, 77, 255, 0.06);
 }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    border-top: 1px solid #333;
-    margin-top: 40px;
+.gaming-hero {
+    padding: 16px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgba(124, 77, 255, 0.04), rgba(0, 215, 255, 0.02));
+    border: 1px solid rgba(124, 77, 255, 0.08)
+}
+
+.neon-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: linear-gradient(90deg, var(--neon1), var(--neon2));
+    color: #001;
+    font-weight: 700;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5)
+}
+
+/* tilt container size */
+.tilt-wrap {
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+/* responsive */
+@media(max-width:880px) {
+    .container {
+        margin: 14px;
+        padding: 12px
+    }
+
+    .kv {
+        gap: 6px
+    }
+
+    .h1 {
+        font-size: 22px
+    }
 }

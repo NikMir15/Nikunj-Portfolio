@@ -1,47 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 
 <head>
-    <title>Projects | Nikunj</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="utf-8">
+    <title>Projects — Nikunj</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
+    <div class="container">
+        <nav>
+            <div class="logo">NR • Nikunj</div>
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="projects.html" class="active">Projects</a>
+                <a href="skills.html">Skills</a>
+                <a href="gaming.html">Gaming</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
 
-    <nav>
-        <div class="logo">NR</div>
-        <div>
-            <a href="index.html">Home</a>
-            <a href="projects.html">Projects</a>
-            <a href="skills.html">Skills</a>
-            <a href="gaming.html">Gaming</a>
-            <a href="contact.html">Contact</a>
-        </div>
-    </nav>
+        <section class="card">
+            <h1 class="h1">Projects</h1>
+            <div class="projects-grid"
+                style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px">
+                <div class="card">
+                    <img src="assets/images/thumbnail.png" alt="project thumbnail" class="thumbnail">
+                    <h3>Distributed File Storage</h3>
+                    <p>Secure multi-server file storage with encryption & MQTT messaging.</p>
+                </div>
 
-    <section class="card">
-        <h1 class="neon-title">Projects</h1>
-    </section>
+                <div class="card">
+                    <img src="assets/images/thumbnail.png" alt="project thumbnail" class="thumbnail">
+                    <h3>Voice Guide (Accessibility)</h3>
+                    <p>QR-triggered indoor navigation with TTS and multilingual support.</p>
+                </div>
 
-    <section class="card">
-        <h2>Distributed File Storage System</h2>
-        <p>Secure encrypted multi-server file storage with redundancy + MQTT messaging.</p>
-    </section>
+                <div class="card">
+                    <img src="assets/images/thumbnail.png" alt="project thumbnail" class="thumbnail">
+                    <h3>Finance Tracker (OCR + NLP)</h3>
+                    <p>Expense capture using OCR, NLP, containerized backend and dashboard.</p>
+                </div>
+            </div>
+        </section>
 
-    <section class="card">
-        <h2>Voice Navigation System</h2>
-        <p>QR-based indoor navigation app with multilingual TTS and speech recognition.</p>
-    </section>
-
-    <section class="card">
-        <h2>Cloud-Based Expense Tracker</h2>
-        <p>OCR, NLP, React UI, Docker, Kubernetes, AWS deployment pipeline.</p>
-    </section>
-
-    <footer>
-        © 2025 Nikunj
-    </footer>
-
+        <footer class="footer">© 2025 Nikunj</footer>
+    </div>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
