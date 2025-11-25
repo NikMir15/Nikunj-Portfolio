@@ -83,7 +83,6 @@ body {
     box-shadow: 0 0 8px rgba(189, 0, 255, 0.2);
 }
 
-/* Updated Hover Effect for Gaming Button */
 .gaming-nav-link:hover {
     color: #fff;
     background: linear-gradient(90deg, rgba(189, 0, 255, 0.2), rgba(0, 225, 255, 0.2));
@@ -116,7 +115,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* Updated Avatar with Pulse Animation */
 .avatar {
     width: 160px;
     height: 160px;
