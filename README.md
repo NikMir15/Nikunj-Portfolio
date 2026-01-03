@@ -1,7 +1,7 @@
 # Portfolio
 
 ## Overview
-This project showcases a practical software solution built as part of my Cloud & Enterprise Computing journey.  
+This project showcases a practical software solution built as part of my projects.  
 It focuses on backend development, clean architecture, and real-world problem solving using modern development practices.
 
 ---
