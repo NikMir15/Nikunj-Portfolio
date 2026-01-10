@@ -48,31 +48,43 @@
   if (!container) return;
 
   const username = "NikMir15";
-  const perPage = 12;
+  const perPage = 100;
 
   container.innerHTML = `<div class="terminal">Loading projects from GitHub...</div>`;
 
   try {
-    const res = await fetch(
-      `https://api.github.com/users/${username}/repos?sort=updated&per_page=${perPage}`,
-      { headers: { "Accept": "application/vnd.github+json" } }
-    );
+    let page = 1;
+    let all = [];
 
-    if (!res.ok) {
-      container.innerHTML = `<div class="terminal">Couldn’t load GitHub projects (HTTP ${res.status}).</div>`;
-      return;
+    while (true) {
+      const res = await fetch(
+        `https://api.github.com/users/${username}/repos?sort=updated&per_page=${perPage}&page=${page}`,
+        { headers: { "Accept": "application/vnd.github+json" } }
+      );
+
+      if (!res.ok) {
+        container.innerHTML = `<div class="terminal">Couldn’t load GitHub projects (HTTP ${res.status}).</div>`;
+        return;
+      }
+
+      const batch = await res.json();
+      if (!Array.isArray(batch) || batch.length === 0) break;
+
+      all = all.concat(batch);
+      if (batch.length < perPage) break;
+      page += 1;
     }
 
-    const repos = await res.json();
+    const repos = all
+      .filter(r => !r.archived)
+      .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
 
-    const filtered = repos.filter(r => !r.fork).filter(r => !r.archived);
-
-    if (!filtered.length) {
+    if (!repos.length) {
       container.innerHTML = `<div class="terminal">No public repositories found.</div>`;
       return;
     }
 
-    container.innerHTML = filtered.map(repo => {
+    container.innerHTML = repos.map(repo => {
       const name = repo.name || "Untitled";
       const desc = repo.description || "No description provided.";
       const lang = repo.language || "N/A";
@@ -96,6 +108,18 @@
 
     const cards = container.querySelectorAll(".card.animate");
     cards.forEach((el, idx) => el.style.setProperty("--delay", `${idx * 90}ms`));
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add("visible");
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    cards.forEach((c) => obs.observe(c));
+
     cards.forEach((el) => {
       const r = el.getBoundingClientRect();
       if (r.top < window.innerHeight * 0.95) el.classList.add("visible");
