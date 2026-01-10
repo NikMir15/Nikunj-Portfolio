@@ -1,10 +1,6 @@
-// =========================
-// Mobile Nav Toggle
-// =========================
 (() => {
   const toggleBtn = document.querySelector(".nav-toggle");
   const nav = document.querySelector("#main-nav");
-
   if (!toggleBtn || !nav) return;
 
   toggleBtn.addEventListener("click", () => {
@@ -16,14 +12,17 @@
   });
 })();
 
-
-// =========================
-// Reveal on Scroll (animations)
-// Add class="reveal" to sections/cards you want animated
-// =========================
 (() => {
-  const targets = document.querySelectorAll(".reveal");
-  if (!targets.length) return;
+  const animated = document.querySelectorAll(".animate");
+  if (!animated.length) return;
+
+  const containers = document.querySelectorAll('[data-stagger="container"]');
+  containers.forEach((wrap) => {
+    const kids = wrap.querySelectorAll(".animate");
+    kids.forEach((el, idx) => {
+      el.style.setProperty("--delay", `${idx * 90}ms`);
+    });
+  });
 
   const obs = new IntersectionObserver(
     (entries) => {
@@ -34,18 +33,19 @@
     { threshold: 0.12 }
   );
 
-  targets.forEach((t) => obs.observe(t));
+  animated.forEach((t) => obs.observe(t));
+
+  window.addEventListener("load", () => {
+    animated.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.92) el.classList.add("visible");
+    });
+  });
 })();
 
-
-// =========================
-// Auto-load GitHub Projects (only on projects.html)
-// Put this container in projects.html:
-// <div class="projects-grid" id="github-projects"></div>
-// =========================
 (async () => {
   const container = document.getElementById("github-projects");
-  if (!container) return; // run only on projects page
+  if (!container) return;
 
   const username = "NikMir15";
   const perPage = 12;
@@ -65,9 +65,7 @@
 
     const repos = await res.json();
 
-    const filtered = repos
-      .filter(r => !r.fork)
-      .filter(r => !r.archived);
+    const filtered = repos.filter(r => !r.fork).filter(r => !r.archived);
 
     if (!filtered.length) {
       container.innerHTML = `<div class="terminal">No public repositories found.</div>`;
@@ -82,14 +80,12 @@
       const liveDemo = repo.homepage && repo.homepage.trim() ? repo.homepage : null;
 
       return `
-        <div class="card reveal">
+        <div class="card animate" style="--delay:0ms">
           <h3>${escapeHtml(name)}</h3>
           <p>${escapeHtml(desc)}</p>
-
           <div class="terminal" style="margin-top:12px;">
             <strong>Language:</strong> ${escapeHtml(lang)} &nbsp;|&nbsp; ⭐ ${stars}
           </div>
-
           <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
             <a class="btn" href="${repo.html_url}" target="_blank" rel="noopener noreferrer">View Code</a>
             ${liveDemo ? `<a class="btn btn-outline" href="${liveDemo}" target="_blank" rel="noopener noreferrer">Live Demo</a>` : ""}
@@ -98,10 +94,21 @@
       `;
     }).join("");
 
+    const cards = container.querySelectorAll(".card.animate");
+    cards.forEach((el, idx) => el.style.setProperty("--delay", `${idx * 90}ms`));
+    cards.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.95) el.classList.add("visible");
+    });
+
   } catch (err) {
     console.error(err);
     container.innerHTML = `<div class="terminal">Unable to load projects. Check internet connection.</div>`;
   }
 
   function escapeHtml(str) {
-    return String(str).replace(/
+    return String(str).replace(/[&<>"']/g, (m) => (
+      { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[m]
+    ));
+  }
+})();
